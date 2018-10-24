@@ -6,7 +6,7 @@ var request = require("request");
 var axios = require("axios");
 var db = require("./models");
 
-var PORT = 5656;
+var PORT = 5657;
 
 var app = express();
 
@@ -80,6 +80,27 @@ app.post("/articles/:id", function(req, res) {
     });
 });
 
+// let's put a route for the notes???
+app.get("/noteynote", function (req, res) {
+        console.log("app.get begun");
+        db.noteynotes.create(results).then(function(dbnoteynotes) {
+            console.log(dbnoteynotes);
+        }).catch(function(error) {
+            return res.json(error);
+        });
+        console.log(results);
+        res.send(results);
+});
+
+app.get("/noteynotes/:id"), function(req, res) {
+    db.noteynotes.find({})
+        .then(function(dbnoteynotes) {
+            res.json(dbnoteynotes);
+        })
+        .catch(function(error) {
+            res.json(error);
+        });
+}
 
 console.log("[WIP] web scraper [WIP]");
 

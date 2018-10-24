@@ -1,6 +1,6 @@
 // TO POPULATE ARTICLES DIV
 $.getJSON("/articles", function(data) {
-    for (var i = 0; i < 25; i++) {
+    for (var i = 0; i < 20; i++) {
         console.log(data[i]);
         $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br/>" + data[i].link + "</p>");
     }
