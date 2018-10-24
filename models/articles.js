@@ -1,3 +1,5 @@
+console.log("articles.js is connected");
+
 var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;

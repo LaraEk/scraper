@@ -1,4 +1,4 @@
-// console.log("notes is connected");
+console.log("notes.js is connected");
 
 var mongoose = require("mongoose");
 
