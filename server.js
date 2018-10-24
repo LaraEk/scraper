@@ -6,47 +6,14 @@ var request = require("request");
 var axios = require("axios");
 var db = require("./models");
 
-var PORT = 5555;
+var PORT = 5656;
 
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/chinanewsdb");
-
-// // SCRAPE ROUTE comes first
-// // note that this one works as well as the axios one below, so we'll use the axios one for now
-// // because yay new library, but I'm going to leave this here as a useful thing. 
-// app.get("/scrape", function(req, res) {
-//     request("https://old.reddit.com/r/relationships/", function(error, response, html) {
-//         var $ = cheerio.load(html);
-//         var results = [];
-
-//         $("h3.lvl_25-title").each(function(i, element) {
-//             var title = $(element).text();
-//             var link = $(element).children().attr("href");
-
-//             db.article.create({
-//                 title: title,
-//                 link: link
-//             },
-//             function(err, inserted) {
-//                 if (err) {
-//                     console.log(err);
-//                 } else {
-//                     console.log(inserted);
-//                 }
-//             });
-//         });
-//         console.log(results);
-//     });
-// })
-
-// app.get("/test", function(req, res) {
-//     console.log(res);
-//     res.json("test");
-// });
+mongoose.connect("mongodb://localhost/relationshipscraperdb");
 
 // SCRAPE ROUTE comes first
 app.get("/scrape", function (req, res) {
